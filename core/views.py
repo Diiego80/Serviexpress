@@ -17,3 +17,6 @@ def servicio (request):
 
 def ubicacion (request):
     return render(request, 'core/ubicacion.html')
+
+def reserva (request):
+    return render(request, 'core/reserva.html')

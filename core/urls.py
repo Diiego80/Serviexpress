@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from .views import index, ingreso, nosotros, servicio, ubicacion
+from .views import index, ingreso, nosotros, servicio, ubicacion, reserva
 
 urlpatterns = [
     path('', index, name="index"),
@@ -8,6 +8,7 @@ urlpatterns = [
     path ('nosotros/', nosotros, name="nosotros"),
     path ('servicio/', servicio, name="servicio"),
     path ('ubicacion/', ubicacion, name="ubicacion"),
+    path ('reserva/', reserva, name="reserva"),
 
     
 ]
