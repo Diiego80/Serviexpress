@@ -1,0 +1,30 @@
+{% load static %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+
+<body background="{% static 'core/genericas/mazda.jpg' %}">
+    <!------ Include the above in your HEAD tag ---------->
+
+    <div class="container login-container">
+        <div class="row">
+            <div class="col-md-8 login-form-1">
+                <h3>Login </h3>
+
+                {% csrf_token %}
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        {{ form }}
+                    </table>
+                    <input type="submit" value="Ingresar" class="btn btn-info">
+
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</body>

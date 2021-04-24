@@ -1,0 +1,105 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<!--Iniciar contenido "NOSOTROS"-->
+<!-- ARTICULOS -->
+<div id="contenido">
+    <article>
+        <!-- MISIÓN -->
+        <h1 class="title"><b>NOSOTROS</b></h1>
+        <img id="a1" src="{% static 'core/img/Genericas/generica.jpg' %}">
+        <h2 class="sub-title" id="subtitles"><b>MISIÓN</b></h2>
+        <p style="text-align: justify;" id="parrafo">Nam ac vitae nisl tempor condimentum. Morbi cursus, nisl ac
+            porta volutpat, ligula arcu sollicitudin
+            metus, quis rhoncus arcu ipsum a ante. Morbi aliquet varius dolor, nec elementum tortor dignissim id.
+            Etiam efficitur nisl augue, eget volutpat odio aliquet a. Mauris dictum ligula eu malesuada egestas.
+            Morbi porttitor lacus libero, euismod faucibus ante blandit et. Maecenas scelerisque est sit amet tempus
+            feugiat. Nunc sed iaculis elit. Sed volutpat a turpis a consequat. Phasellus ornare dictum dapibus. Nam
+            mattis vulputate leo id lobortis. In ornare, massa nec semper luctus, erat nunc dapibus orci, et
+            lobortis dui sapien in orci. Cras dapibus, purus vitae sodales efficitur, lectus massa mollis tortor,
+            vitae dapibus dui tortor lacinia neque. Donec id arcu odio.
+        </p>
+
+        <!-- VISIÓN -->
+        <img id="a2" src="{% static 'core/img/Genericas/generica.jpg' %}">
+        <h2 class="sub-title"><b>VISIÓN</b></h2>
+        <p style="text-align: justify;" id="parrafo">Vivamus sed est finibus, venenatis magna at, sodales
+            ligula. Phasellus libero lectus, efficitur ut vehicula in, eleifend vel lacus. Pellentesque molestie
+            velit purus, id consectetur leo laoreet eget. Cras sed enim in lorem mollis mattis. Maecenas sit amet
+            velit
+            sodales, venenatis lectus et, lacinia nulla. Sed consequat tempor tellus id posuere. In in enim leo. Sed
+            dolor tortor, pharetra sit amet velit ut, feugiat vehicula turpis. In venenatis, lorem a suscipit
+            sodales, mauris ante dictum nisi, non cursus magna elit eu eli.
+        </p>
+    </article>
+</div>
+
+
+<!-- GALERIA -->
+<div class="backaside">
+    <aside>
+        <h1 class="title"><b>GALERIA</b></h1>
+        <div class="galeria">
+            <a href="#image1">
+                <img src="{% static 'core/img/Genericas/generica1.jpg' %}" alt="Galeria">
+            </a>
+            <a href="#image2">
+                <img src="{% static 'core/img/Genericas/generica2.jpg' %}" alt="Galeria">
+            </a>
+            <a href="#image3">
+                <img src="{% static 'core/img/Genericas/generica3.jpg' %}" alt="Galeria">
+            </a>
+            <a href="#image4">
+                <img src="{% static 'core/img/Genericas/generica4.jpg' %}" alt="Galeria">
+            </a>
+            <a href="#image5">
+                <img src="{% static 'core/img/Genericas/generica5.jpg' %}" alt="Galeria">
+            </a>
+            <a href="#image6">
+                <img src="{% static 'core/img/Genericas/generica6.jpg' %}" alt="Galeria">
+            </a>
+        </div>
+    </aside>
+
+    <div>
+        <div class="light-box" id="image1">
+            <a href="#image6" class="prev" style="text-decoration: none;">6<i class="fas fa-angle-left"></i></a>
+            <img src="{% static 'core/img/Genericas/generica1.jpg' %}" alt="image1">
+            <a href="#image2" class="next" style="text-decoration: none;">2<i class="fas fa-angle-right"></i></a>
+            <a href="#" class="close" style="color: white;">x</a>
+        </div>
+        <div class="light-box" id="image2">
+            <a href="#image1" class="prev" style="text-decoration: none;">1<i class="fas fa-angle-left"></i></a>
+            <img src="{% static 'core/img/Genericas/generica2.jpg' %}" alt="image1">
+            <a href="#image3" class="next" style="text-decoration: none;">3<i class="fas fa-angle-right"></i></a>
+            <a href="#" class="close" style="color: white;">x</a>
+        </div>
+        <div class="light-box" id="image3">
+            <a href="#image2" class="prev" style="text-decoration: none;">2<i class="fas fa-angle-left"></i></a>
+            <img src="{% static 'core/img/Genericas/generica3.jpg' %}" alt="image1">
+            <a href="#image4" class="next" style="text-decoration: none;">4<i class="fas fa-angle-right"></i></a>
+            <a href="#" class="close" style="color: white;">x</a>
+        </div>
+        <div class="light-box" id="image4">
+            <a href="#image3" class="prev" style="text-decoration: none;">3<i class="fas fa-angle-left"></i></a>
+            <img src="{% static 'core/img/Genericas/generica4.jpg' %}" alt="image1">
+            <a href="#image5" class="next" style="text-decoration: none;">5<i class="fas fa-angle-right"></i></a>
+            <a href="#" class="close" style="color: white;">x</a>
+        </div>
+        <div class="light-box" id="image5">
+            <a href="#image4" class="prev" style="text-decoration: none;">4<i class="fas fa-angle-left"></i></a>
+            <img src="{% static 'core/img/Genericas/generica5.jpg' %}" alt="image1">
+            <a href="#image6" class="next" style="text-decoration: none;">6<i class="fas fa-angle-right"></i></a>
+            <a href="#" class="close" style="color: white;">x</a>
+        </div>
+        <div class="light-box" id="image6">
+            <a href="#image5" class="prev" style="text-decoration: none;">5<i class="fas fa-angle-left"></i></a>
+            <img src="{% static 'core/img/Genericas/generica6.jpg' %}" alt="image1">
+            <a href="#image1" class="next" style="text-decoration: none;">1<i class="fas fa-angle-right"></i></a>
+            <a href="#" class="close" style="color: white;">x</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
