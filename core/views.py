@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UsuarioForm
+from .forms import UsuarioForm, ReservaForm
 
 # Create your views here.
 
@@ -19,4 +19,7 @@ def ubicacion (request):
     return render(request, 'core/ubicacion.html')
 
 def reserva (request):
-    return render(request, 'core/reserva.html')
+    data = {
+        'form': ReservaForm()
+    }
+    return render(request, 'core/reserva.html', data)
