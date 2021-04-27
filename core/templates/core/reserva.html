@@ -1,19 +1,15 @@
 {% extends 'core/base.html' %}
 {% load static %}
 {% block contenido %}
+<link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
 
 
 
-
-<form action="" class="formulario_reserva"></form>
-    <div class="form-header">
-        <h1>Make your reservation</h1>
-    </div>
-    <form>
-
-
-        <div class="form-btn"> <button class="submit-btn">Reservar</button> </div>
-    </form>
+<form action="" class="formulario_reserva" method="POST">
+    {{formReserva}}
+    <br>
+    <button type="submit" id="btnEnviar" class="button">Enviar</button>
+</form>
 
 
 {% endblock %}

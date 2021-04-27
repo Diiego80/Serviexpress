@@ -46,8 +46,8 @@ class Cliente(models.Model):
         managed = False
         db_table = 'cliente'
 
-    def __str__(self):
-        return self.cli_pnombre
+    def __int__(self):
+        return self.cli_rut
 
 
 class Comuna(models.Model):
@@ -207,7 +207,7 @@ class Region(models.Model):
 
 class Reserva(models.Model):
     res_id_reserva = models.BigIntegerField(primary_key=True)
-    res_hora_reservada = models.CharField(max_length=5)
+    res_hora_reservada = models.DateField(max_length=5)
     res_fecha_pedido_reserva = models.DateField()
     res_desc_reserva = models.CharField(max_length=200)
     cli_rut = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='cli_rut')

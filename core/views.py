@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UsuarioForm, ReservaForm
+from .forms import UsuarioForm, ReservaForm, ProductoForm, RegionForm, CiudadForm, ComunaForm, ClienteForm, EmpleadoForm, TipoMarcaForm, ProveedorForm, TipoEmpleadoForm, TipoPagoForm, TipoUsuarioForm, PagoServicioForm, ServicioForm, PedidoOrdenForm, PedidoOrdenProductoForm, RecepcionPedidoForm, RecepcionPedidoProductoForm, DetalleServicioForm, EmpleadoServicioForm, BoletaFacturaPedidoForm 
 
 # Create your views here.
 
@@ -20,6 +20,10 @@ def ubicacion (request):
 
 def reserva (request):
     data = {
-        'form': ReservaForm()
+        'formReserva': ReservaForm()
     }
     return render(request, 'core/reserva.html', data)
+
+
+def registro (request):
+    return render(request, 'registration/registro.html')

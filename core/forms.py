@@ -1,6 +1,5 @@
 from django import forms
-from .models import Usuario, Reserva, Producto, Region, Ciudad, Comuna, Cliente, Empleado, TipoMarca, Proveedor, TipoEmpleado, TipoPago, TipoUsuario, PagoServicio, Servicio, PedidoOrden, PedidoOrdenProducto
-
+from .models import Usuario, Reserva, Producto, Region, Ciudad, Comuna, Cliente, Empleado, TipoMarca, Proveedor, TipoEmpleado, TipoPago, TipoUsuario, PagoServicio, Servicio, PedidoOrden, PedidoOrdenProducto, RecepcionPedido, RecepcionPedidoProducto, DetalleServicio, EmpleadoServicio, BoletaFactura
 
 class UsuarioForm(forms.ModelForm):
 
@@ -12,7 +11,7 @@ class ReservaForm(forms.ModelForm):
 
     class Meta:
         model = Reserva
-        fields = ["res_hora_reservada", "res_fecha_pedido_reserva", "res_desc_reserva", "cli_rut"]
+        fields = "__all__"
 
 class ProductoForm(forms.ModelForm):
 
@@ -103,4 +102,35 @@ class PedidoOrdenProductoForm(forms.ModelForm):
 
     class Meta:
         model = PedidoOrdenProducto
+        fields = "__all__"
+
+
+class RecepcionPedidoForm(forms.ModelForm):
+
+    class Meta:
+        model = RecepcionPedido
+        fields = "__all__"
+
+class RecepcionPedidoProductoForm(forms.ModelForm):
+
+    class Meta:
+        model = RecepcionPedidoProducto
+        fields = "__all__"
+
+class DetalleServicioForm(forms.ModelForm):
+
+    class Meta:
+        model = DetalleServicio
+        fields = "__all__"
+
+class EmpleadoServicioForm(forms.ModelForm):
+
+    class Meta:
+        model = EmpleadoServicio
+        fields = "__all__"
+
+class BoletaFacturaPedidoForm(forms.ModelForm):
+
+    class Meta:
+        model = BoletaFactura
         fields = "__all__"
