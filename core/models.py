@@ -6,10 +6,54 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
+from sequences import get_next_value
+
+
+import functools
+
+def set_sql_for_field(field, sql):
+    """
+    Decorator for Model.save() to set SQL for field if empty.
+
+    Example:
+
+    class LegacyModel(models.Model):
+        col1 = models.IntegerField(primary_key=True)
+        col2 = models.IntegerField()
+
+        @set_sql_for_field('col1', 'select col1_seq.nextval from dual')
+        @set_sql_for_field('col2', 'select 1+max(col2) from legacy_model')
+        def save(self, *args, **kwargs):
+            super().save(*args, **kwargs)
+
+    When this model is saved col1 and col2 will be set (if empty) to the output
+    of the provided SQL within the schema/database of the model's app.
+    """
+    def decorator(model_save_func):
+        @functools.wraps(model_save_func)
+        def wrapper(obj, *args, **kwargs):
+            assert hasattr(obj, field), (
+                'set_sql_for_field was given a field that does not exist on '
+                'the model. Double-check model fields and decorators for '
+                f'{obj.__class__}.{field} and SQL {sql}'
+            )
+
+            if getattr(obj, field) is None:
+                # Multi-DB safe! Get DB for class from default manager.
+                database = obj.__class__._default_manager.db
+
+                from django.db import connections
+                with connections[database].cursor() as cursor:
+                    cursor.execute(f'{sql}')
+                    setattr(obj, field, cursor.fetchone()[0])
+
+            return model_save_func(obj, *args, **kwargs)
+        return wrapper
+    return decorator
 
 
 class BoletaFactura(models.Model):
-    bol_fac_id = models.BigIntegerField(primary_key=True)
+    bol_fac_id = models.AutoField(primary_key=True)
     serv = models.ForeignKey('Servicio', models.DO_NOTHING)
     bol_fac_total = models.BigIntegerField()
     bol_fac_fecha_emision = models.DateField()
@@ -21,7 +65,7 @@ class BoletaFactura(models.Model):
 
 
 class Ciudad(models.Model):
-    id_ciudad = models.BigIntegerField(primary_key=True)
+    id_ciudad = models.AutoField(primary_key=True, blank=True)
     desc_ciudad = models.CharField(max_length=100)
     id_region = models.ForeignKey('Region', models.DO_NOTHING, db_column='id_region')
 
@@ -38,7 +82,7 @@ class Cliente(models.Model):
     cli_pnombre = models.CharField(max_length=30)
     cli_apellidopat = models.CharField(max_length=50)
     cli_apellidomat = models.CharField(max_length=50)
-    cli_email = models.CharField(max_length=50)
+    cli_email = models.EmailField(max_length=50)
     cli_telefono = models.BigIntegerField()
     id_comuna = models.ForeignKey('Comuna', models.DO_NOTHING, db_column='id_comuna', blank=True, null=True)
 
@@ -90,7 +134,7 @@ class Empleado(models.Model):
     emp_apellidomat = models.CharField(max_length=50)
     emp_sueldo = models.BigIntegerField()
     emp_telefono = models.IntegerField()
-    emp_email = models.CharField(max_length=30)
+    emp_email = models.EmailField(max_length=30)
     id_tipo_empleado = models.ForeignKey('TipoEmpleado', models.DO_NOTHING, db_column='id_tipo_empleado')
     user = models.ForeignKey('Usuario', models.DO_NOTHING)
 
@@ -203,7 +247,9 @@ class Region(models.Model):
     class Meta:
         managed = False
         db_table = 'region'
-
+        
+    def __str__(self):
+        return self.desc_region
 
 class Reserva(models.Model):
     res_id_reserva = models.BigIntegerField(primary_key=True)
@@ -218,17 +264,21 @@ class Reserva(models.Model):
 
 
 class Servicio(models.Model):
-    serv_id = models.BigIntegerField(primary_key=True)
+    serv_id = models.BigIntegerField(primary_key=True) 
     serv_descripcion = models.CharField(max_length=150)
     serv_costo = models.BigIntegerField()
+    serv_titulo = models.CharField(max_length=30)
 
     class Meta:
         managed = False
         db_table = 'servicio'
 
+    def __str__(self):
+        return self.serv_descripcion
+
 
 class TipoEmpleado(models.Model):
-    id_tipo_empleado = models.BigIntegerField(primary_key=True)
+    id_tipo_empleado = models.AutoField(primary_key=True)
     desc_empleado = models.CharField(max_length=100)
 
     class Meta:
@@ -264,7 +314,7 @@ class TipoUsuario(models.Model):
 
 
 class Usuario(models.Model):
-    user_id = models.BigIntegerField(primary_key=True)
+    user_id = models.AutoField(primary_key=True)
     user_nombre = models.CharField(max_length=20)
     user_contrasena = models.CharField(max_length=20)
     tipo_user = models.ForeignKey(TipoUsuario, models.DO_NOTHING)
