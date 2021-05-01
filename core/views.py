@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import BoletaFactura, Ciudad, Cliente, Comuna, DetalleServicio, Empleado, EmpleadoServicio, PagoServicio, PedidoOrden, PedidoOrdenProducto, Producto, Proveedor, RecepcionPedido, RecepcionPedidoProducto, Region, Reserva, Servicio, TipoEmpleado, TipoMarca, TipoPago, TipoUsuario, Usuario
 from .forms import UsuarioForm, ReservaForm, ProductoForm, RegionForm, CiudadForm, ComunaForm, ClienteForm, EmpleadoForm, TipoMarcaForm, ProveedorForm, TipoEmpleadoForm, TipoPagoForm, TipoUsuarioForm, PagoServicioForm, ServicioForm, PedidoOrdenForm, PedidoOrdenProductoForm, RecepcionPedidoForm, RecepcionPedidoProductoForm, DetalleServicioForm, EmpleadoServicioForm, BoletaFacturaPedidoForm 
+#Extra
 from django.http import JsonResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -57,4 +58,19 @@ def registro(request):
             
     return render(request, 'registration/registro.html', dataRegistro)
 
+
+def registro_clientes(request):
+    return render (request,'core/registro_clientes.html')
+
+def registro_productos(request):
+    return render (request,'core/registro_productos.html')
+
+def formulario_productos(request):
+    return render (request,'core/formularios/formulario_productos.html')
+
+def formulario_empleados(request):
+    return render(request,'core/formularios/formulario_productos.html')
+
+def formulario_clientes(request):
+    return render(request, 'core/formularios/formulario_clientes.html')
  
