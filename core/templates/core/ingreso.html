@@ -1,10 +1,24 @@
-/{% extends 'core/base.html' %}
+{% extends 'core/base.html' %}
 {% load static %}
+{% block css %}
+<title>INGRESO</title>
+<link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
+{% endblock %}
+
+<!-- BLOC NAV -->
+{% block nav%}
+<a class="nav-item nav-link" href="{% url 'index' %}">INICIO <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link" href="{% url 'nosotros' %}">NOSOTROS</a>
+<a class="nav-item nav-link" href="{% url 'servicio' %}">SERVICIOS</a>
+<a class="nav-item nav-link" href="{% url 'ubicacion' %}">UBICACIÓN</a>
+{% endblock %}
+
+<!-- BLOC CONTENIDO -->
 {% block contenido %}
 <!-- FORMULARIO LOGIN-->
 <div id="contenido">
     <section class="form">
-        <form action="" method="get" id="formularioIngreso"> Felicidad pal que lee
+        <form action="" method="get" id="formularioIngreso">
             <h1 class="title"><b>INGRESO</b></h1>
 
             <label for="txtUser"><b>USUARIO</b></label>
@@ -31,5 +45,4 @@
         </form>
     </section>
 </div>
-
 {% endblock %}

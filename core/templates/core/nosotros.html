@@ -1,8 +1,20 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% block css %}
+<title>NOSOTROS</title>
+<link rel="stylesheet" href="{% static 'core/css/nosotros.css' %}">
+{% endblock %}
 
+<!-- BLOC NAV -->
+{% block nav%}
+<a class="nav-item nav-link" href="{% url 'index' %}">INICIO <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link active" href="{% url 'nosotros' %}">NOSOTROS</a>
+<a class="nav-item nav-link" href="{% url 'servicio' %}">SERVICIOS</a>
+<a class="nav-item nav-link" href="{% url 'ubicacion' %}">UBICACIÓN</a>
+{% endblock %}
+
+<!-- BLOC CONTENIDO -->
 {% block contenido %}
-<!--Iniciar contenido "NOSOTROS"-->
 <!-- ARTICULOS -->
 <div id="contenido">
     <article>
@@ -24,13 +36,9 @@
         <!-- VISIÓN -->
         <img id="a2" src="{% static 'core/img/Genericas/generica.jpg' %}">
         <h2 class="sub-title"><b>VISIÓN</b></h2>
-        <p style="text-align: justify;" id="parrafo">Vivamus sed est finibus, venenatis magna at, sodales
-            ligula. Phasellus libero lectus, efficitur ut vehicula in, eleifend vel lacus. Pellentesque molestie
-            velit purus, id consectetur leo laoreet eget. Cras sed enim in lorem mollis mattis. Maecenas sit amet
-            velit
-            sodales, venenatis lectus et, lacinia nulla. Sed consequat tempor tellus id posuere. In in enim leo. Sed
-            dolor tortor, pharetra sit amet velit ut, feugiat vehicula turpis. In venenatis, lorem a suscipit
-            sodales, mauris ante dictum nisi, non cursus magna elit eu eli.
+        <p style="text-align: justify;" id="parrafo">Nuestro primer objetivo es brindar un servicio de calidad
+            a todos nuestros clientes transmitiendo seguridad y eficiencia a nivel de mercado.
+
         </p>
     </article>
 </div>
@@ -101,5 +109,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

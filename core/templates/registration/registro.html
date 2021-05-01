@@ -8,7 +8,7 @@
 <body background="{% static 'core/genericas/mazda.jpg' %}">
     <!------ Include the above in your HEAD tag ---------->
 
-    <div class="container login-container">
+    <div class="container login-container" style="background: aquamarine" >
         <div class="row">
             <div class="col-md-8 login-form-1">
                 <h3>Registro de nuevo usuario</h3>
@@ -19,10 +19,10 @@
                     <table>
                         {{ form }}
                     </table>
-                    <input type="submit" value="Registrar" class="btn btn-info">
+                    <button type="submit" id="btnEnviar" class="btn btn-info" href="/">Registrar</button>
 
                 </form>
-              
+              {{mensaje}}
             </div>
 
         </div>

@@ -1,15 +1,26 @@
 {% extends 'core/base.html' %}
 {% load static %}
+{% block css %}
+<title>RESERVA</title>
+<link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
+{% endblock %}
+
+<!-- BLOC NAV -->
+{% block nav%}
+<a class="nav-item nav-link" href="{% url 'index' %}">INICIO <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link" href="{% url 'nosotros' %}">NOSOTROS</a>
+<a class="nav-item nav-link" href="{% url 'servicio' %}">SERVICIOS</a>
+<a class="nav-item nav-link" href="{% url 'ubicacion' %}">UBICACIÓN</a>
+{% endblock %}
+
+<!-- BLOC CONTENIDO -->
 {% block contenido %}
 <link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
 
-
-
 <form action="" class="formulario_reserva" method="POST">
+    {% csrf_token %}
     {{formReserva}}
     <br>
     <button type="submit" id="btnEnviar" class="button">Enviar</button>
 </form>
-
-
 {% endblock %}

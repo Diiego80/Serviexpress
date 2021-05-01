@@ -1,51 +1,47 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block contenido %}
-
+{% block css %}
+<title>SERVICIOS</title>
 <link rel="stylesheet" href="{% static 'core/css/servicio_boot.css' %}">
+{% endblock %}
+
+<!-- BLOC NAV -->
+{% block nav%}
+<a class="nav-item nav-link" href="{% url 'index' %}">INICIO <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link" href="{% url 'nosotros' %}">NOSOTROS</a>
+<a class="nav-item nav-link active" href="{% url 'servicio' %}">SERVICIOS</a>
+<a class="nav-item nav-link" href="{% url 'ubicacion' %}">UBICACIÓN</a>
+{% endblock %}
+
+<!-- BLOC CONTENIDO -->
+{% block contenido %}
 <!-- SERVICIOS -->
 <div id="contenido">
+
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <p class="subtitle">Services</p>
-                <h2 class="section-title">Our Service Area</h2>
+                <h2 class="section-title">Servicios Disponibles</h2>
+                <p class="subtitle">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+
             </div>
+            {% load humanize %}
+            {% for p in servicio %}
             <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card border-0 shadow rounded-xs pt-5">
-                    <div class="card-body"> <i class="fa fa-object-ungroup icon-lg icon-primary icon-bg-primary icon-bg-circle mb-3"></i>
-                        <h4 class="mt-4 mb-3">Cambio de neumaticos</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+                <div class="card border-0 shadow rounded-xs pt-5" style="background-color: rgb(191, 241, 248);">
+
+                    <div class="card-body"> <img src="{% static 'core/img/Iconos/llave.png' %}" alt="" width="45" height="45" i class="fa fa-object-ungroup icon-lg icon-primary icon-bg-primary icon-bg-circle mb-3"  ></i>
+                        <h3 class="mt-4 mb-3">{{p.serv_titulo}}</h3>
+                        <h5>{{p.serv_descripcion}}</h5>
+                        <p style="color: cornflowerblue;"> Costo: ${{p.serv_costo | intcomma}}</p>
                         <a href="{% url 'reserva' %}" class="btn btn-dark" id="btning">Reservar</a>
+                        
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card border-0 shadow rounded-xs pt-5">
-                    <div class="card-body"> <i class="fa fa-users icon-lg icon-yellow icon-bg-yellow icon-bg-circle mb-3"></i>
-                        <h4 class="mt-4 mb-3">Limpieza de motor</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card border-0 shadow rounded-xs pt-5">
-                    <div class="card-body"> <i class="fa fa-desktop icon-lg icon-purple icon-bg-purple icon-bg-circle mb-3"></i>
-                        <h4 class="mt-4 mb-3">Cambio de aceite</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 mb-4">
-                <div class="card border-0 shadow rounded-xs pt-5">
-                    <div class="card-body"> <i class="fa fa-cloud icon-lg icon-cyan icon-bg-cyan icon-bg-circle mb-3"></i>
-                        <h4 class="mt-4 mb-3">Limpieza de vehiculo</h4>
-                        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-                    </div>
-                </div>
-            </div>
-            
+            {% endfor %}
         </div>
     </div>
+
 </div>
 {% endblock %}

@@ -40,7 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'colorfield',
-]
+    'django.contrib.humanize',
+    'sequences.apps.SequencesConfig',
+    ]
 
 
 X_FRAME_OPTIONS='SAMEORIGIN' 

@@ -1,9 +1,20 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block contenido %}
+{% block css %}
+<title>INICIO</title>
+<link rel="stylesheet" href="{% static 'core/css/index.css' %}">
+{% endblock %}
 
-<link rel="stylesheet" href="{% static 'core/css/index.css'%}">
-<!-- SECCION - SLIDER -->
+<!-- BLOC NAV -->
+{% block nav%}
+<a class="nav-item nav-link active" href="{% url 'index' %}">INICIO <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link" href="{% url 'nosotros' %}">NOSOTROS</a>
+<a class="nav-item nav-link" href="{% url 'servicio' %}">SERVICIOS</a>
+<a class="nav-item nav-link" href="{% url 'ubicacion' %}">UBICACIÓN</a>
+{% endblock %}
+
+<!-- BLOC CONTENIDO -->
+{% block contenido %}
 <section>
     <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
         <!-- IMAGENES -->
@@ -36,6 +47,34 @@
 
 <!-- CONTENIDO -->
 <div id="contenido">
-
+    <div id="servicios" class="servicios">
+        <div class="servicio">
+            <div id="container" class="container">
+                <img src="{% static 'core/img/Genericas/generica.jpg' %}" alt="">
+                <div class="detalle">
+                    <a id="tit">LAVADO<br></a>
+                    <a id="detalle">Lavado del vehiculo + accesorios<br></a>
+                </div>
+            </div>
+        </div>
+        <div class="servicio">
+            <div id="container" class="container">
+                <img src="{% static 'core/img/Genericas/generica.jpg' %}" alt="">
+                <div class="detalle">
+                    <a id="tit">DESABOLLADURA<br></a>
+                    <a id="detalle">Arreglo de una parte del vehiculo + accesorios<br></a>
+                </div>
+            </div>
+        </div>
+        <div class="servicio">
+            <div id="container" class="container">
+                <img src="{% static 'core/img/Genericas/generica.jpg' %}" alt="">
+                <div class="detalle">
+                    <a id="tit">ARREGLO<br></a>
+                    <a id="detalle">Arreglo en particular + accesorios<br></a>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

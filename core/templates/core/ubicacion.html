@@ -1,9 +1,22 @@
 {% extends 'core/base.html' %}
 {% load static %}
-{% block contenido %}
+{% block css %}
+<title>UBICACION</title>
+<link rel="stylesheet" href="{% static 'core/css/ubicacion.css' %}">
+{% endblock %}
 
- <!-- MAPA -->
- <div id="contenido">
+<!-- BLOC NAV -->
+{% block nav%}
+<a class="nav-item nav-link" href="{% url 'index' %}">INICIO <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link" href="{% url 'nosotros' %}">NOSOTROS</a>
+<a class="nav-item nav-link" href="{% url 'servicio' %}">SERVICIOS</a>
+<a class="nav-item nav-link active" href="{% url 'ubicacion' %}">UBICACIÓN</a>
+{% endblock %}
+
+<!-- BLOC CONTENIDO -->
+{% block contenido %}
+<!-- MAPA -->
+<div id="contenido">
     <article>
         <h1 class="title"><b>UBICACIÓN</b></h1>
         <p id="parrafo"><b>AVENIDA CONCHA Y TORO, AV. SAN CARLOS 1340,<br>PUENTE ALTO, REGIÓN METROPOLITANA</b></p>
@@ -29,5 +42,4 @@
         </p>
     </aside>
 </div>
-
 {% endblock %}

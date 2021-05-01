@@ -6,7 +6,7 @@ class UsuarioForm(forms.ModelForm):
     class Meta:
         model = Usuario
         fields = ['user_nombre', 'user_contrasena']
-
+        #fields = '__all__'
 class ReservaForm(forms.ModelForm):
 
     class Meta:
@@ -90,7 +90,7 @@ class ServicioForm(forms.ModelForm):
 
     class Meta:
         model = Servicio
-        fields = "__all__"
+        fields = ['serv_descripcion', 'serv_costo']
 
 class PedidoOrdenForm(forms.ModelForm):
 
