@@ -7,10 +7,9 @@
 # Feel free to rename the models, but don't rename db_table values or field names.
 from django.db import models
 from sequences import get_next_value
-
-
+import datetime
+from django.db import models
 import functools
-
 def set_sql_for_field(field, sql):
     """
     Decorator for Model.save() to set SQL for field if empty.
@@ -28,6 +27,7 @@ def set_sql_for_field(field, sql):
 
     When this model is saved col1 and col2 will be set (if empty) to the output
     of the provided SQL within the schema/database of the model's app.
+    """
     """
     def decorator(model_save_func):
         @functools.wraps(model_save_func)
@@ -50,7 +50,7 @@ def set_sql_for_field(field, sql):
             return model_save_func(obj, *args, **kwargs)
         return wrapper
     return decorator
-
+"""
 
 class BoletaFactura(models.Model):
     bol_fac_id = models.AutoField(primary_key=True)
@@ -251,10 +251,29 @@ class Region(models.Model):
     def __str__(self):
         return self.desc_region
 
+opciones_hora_reservada = [
+    ["08:00","08:00"],
+    ["09:00","09:00"],
+    ["10:00","10:00"],
+    ["11:00","11:00"],
+    ["12:00","12:00"],
+    ["13:00","13:00"],
+    ["14:00","14:00"],
+    ["15:00","15:00"],
+    ["16:00","16:00"],
+    ["17:00","17:00"],
+    ["18:00","18:00"],
+    ["19:00","19:00"],
+    ["20:00","20:00"]
+
+]
+
+
+
 class Reserva(models.Model):
     res_id_reserva = models.BigIntegerField(primary_key=True)
-    res_hora_reservada = models.DateField(max_length=5)
-    res_fecha_pedido_reserva = models.DateField()
+    res_hora_reservada = models.DateField(max_length=5, choices=opciones_hora_reservada)
+    res_fecha_pedido_reserva = models.DateField(default=datetime.date.today)
     res_desc_reserva = models.CharField(max_length=200)
     cli_rut = models.ForeignKey(Cliente, models.DO_NOTHING, db_column='cli_rut')
 

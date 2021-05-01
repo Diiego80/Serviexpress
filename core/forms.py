@@ -1,17 +1,18 @@
 from django import forms
 from .models import Usuario, Reserva, Producto, Region, Ciudad, Comuna, Cliente, Empleado, TipoMarca, Proveedor, TipoEmpleado, TipoPago, TipoUsuario, PagoServicio, Servicio, PedidoOrden, PedidoOrdenProducto, RecepcionPedido, RecepcionPedidoProducto, DetalleServicio, EmpleadoServicio, BoletaFactura
-
+import datetime
 class UsuarioForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
         fields = ['user_nombre', 'user_contrasena']
         #fields = '__all__'
-class ReservaForm(forms.ModelForm):
 
+class ReservaForm(forms.ModelForm):
+    
     class Meta:
         model = Reserva
-        fields = "__all__"
+        fields =  ['res_hora_reservada','res_fecha_pedido_reserva','res_desc_reserva','cli_rut']
 
 class ProductoForm(forms.ModelForm):
 

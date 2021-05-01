@@ -29,20 +29,6 @@ def servicio (request):
 def ubicacion (request):
     return render(request, 'core/ubicacion.html')
 
-def reserva (request):
-    data = {
-        'formReserva': ReservaForm()
-    }
-
-    if request.method == 'POST':
-        formulario = ReservaForm(data=request.POST)
-        if formulario.is_valid():
-            formulario.save() 
-            data["mensaje"] = "Reserva Guardada Con Exito"
-        else:
-            data["form"] = formulario
-    return render(request, 'core/reserva.html', data)
-
 
 def registro(request):
     dataRegistro = {
@@ -73,4 +59,18 @@ def formulario_empleados(request):
 
 def formulario_clientes(request):
     return render(request, 'core/formularios/formulario_clientes.html')
+
+def formulario_reserva (request):
+    data = {
+        'formReserva': ReservaForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ReservaForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save() 
+            data["mensaje"] = "Reserva Guardada Con Exito"
+        else:
+            data["form"] = formulario
+    return render(request, 'core/formularios/formulario_reserva.html', data)
  
