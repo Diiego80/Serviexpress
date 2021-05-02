@@ -62,6 +62,9 @@ class BoletaFactura(models.Model):
     class Meta:
         managed = False
         db_table = 'boleta_factura'
+    
+    def __str__(self):
+        return self.bol_fac_id
 
 
 class Ciudad(models.Model):
@@ -90,8 +93,8 @@ class Cliente(models.Model):
         managed = False
         db_table = 'cliente'
 
-    def __int__(self):
-        return self.cli_rut
+    def __str__(self):
+        return self.cli_pnombre+" "+self.cli_apellidopat
 
 
 class Comuna(models.Model):
@@ -143,7 +146,7 @@ class Empleado(models.Model):
         db_table = 'empleado'
     
     def __str__(self):
-        return self.emp_pnombre
+        return self.emp_pnombre+" "+self.emp_apellidopat
 
 
 class EmpleadoServicio(models.Model):
@@ -158,6 +161,9 @@ class EmpleadoServicio(models.Model):
         managed = False
         db_table = 'empleado_servicio'
 
+    def __str__(self):
+        return self.emp_rut
+
 
 class PagoServicio(models.Model):
     pago_id = models.BigIntegerField(primary_key=True)
@@ -169,6 +175,9 @@ class PagoServicio(models.Model):
         managed = False
         db_table = 'pago_servicio'
 
+    def __str__(self):
+        return self.pago_id
+
 
 class PedidoOrden(models.Model):
     ped_id_emision = models.BigIntegerField(primary_key=True)
@@ -179,6 +188,9 @@ class PedidoOrden(models.Model):
     class Meta:
         managed = False
         db_table = 'pedido_orden'
+    
+    def __str__(self):
+        return self.ped_id_emision
 
 
 class PedidoOrdenProducto(models.Model):
@@ -193,6 +205,9 @@ class PedidoOrdenProducto(models.Model):
         managed = False
         db_table = 'pedido_orden_producto'
 
+    def __str__(self):
+        return self.id_pedido_orden_prod
+
 
 class Producto(models.Model):
     prod_id = models.BigIntegerField(primary_key=True)
@@ -204,6 +219,9 @@ class Producto(models.Model):
     class Meta:
         managed = False
         db_table = 'producto'
+    
+    def __str__(self):
+        return self.prod_nombre
 
 
 class Proveedor(models.Model):
@@ -214,6 +232,9 @@ class Proveedor(models.Model):
     class Meta:
         managed = False
         db_table = 'proveedor'
+    
+    def __str__(self):
+        return self.prov_nombre
 
 
 class RecepcionPedido(models.Model):
@@ -225,6 +246,9 @@ class RecepcionPedido(models.Model):
     class Meta:
         managed = False
         db_table = 'recepcion_pedido'
+    
+    def __str__(self):
+        return self.id_recepcion
 
 
 class RecepcionPedidoProducto(models.Model):
@@ -238,6 +262,9 @@ class RecepcionPedidoProducto(models.Model):
     class Meta:
         managed = False
         db_table = 'recepcion_pedido_producto'
+    
+    def __str__(self):
+        return self.id_pedido_prod
 
 
 class Region(models.Model):
@@ -280,6 +307,9 @@ class Reserva(models.Model):
     class Meta:
         managed = False
         db_table = 'reserva'
+    
+    def __str__(self):
+        return self.res_id_reserva
 
 
 class Servicio(models.Model):
@@ -303,6 +333,9 @@ class TipoEmpleado(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_empleado'
+    
+    def __str__(self):
+        return self.desc_empleado
 
 
 class TipoMarca(models.Model):
@@ -312,6 +345,9 @@ class TipoMarca(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_marca'
+    
+    def __str__(self):
+        return self.desc_marca
 
 
 class TipoPago(models.Model):
@@ -321,6 +357,9 @@ class TipoPago(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_pago'
+    
+    def __str__(self):
+        return self.desc_medio_pago
 
 
 class TipoUsuario(models.Model):
@@ -330,6 +369,9 @@ class TipoUsuario(models.Model):
     class Meta:
         managed = False
         db_table = 'tipo_usuario'
+    
+    def __str__(self):
+        return self.user_desc
 
 
 class Usuario(models.Model):
