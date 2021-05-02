@@ -14,6 +14,10 @@ class ReservaForm(forms.ModelForm):
         model = Reserva
         fields =  ['res_hora_reservada','res_fecha_pedido_reserva','res_desc_reserva','cli_rut']
 
+        widgets = {
+            "res_fecha_pedido_reserva": forms.SelectDateWidget()
+        }
+
 class ProductoForm(forms.ModelForm):
 
     class Meta:

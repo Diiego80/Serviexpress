@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block css %}
+<title>INGRESO</title>
+<link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
+{% endblock %}
+
+<!-- BLOC NAV -->
+{% block nav%}
+<a class="nav-item nav-link" href="{% url 'index' %}">INICIO <span class="sr-only">(current)</span></a>
+<a class="nav-item nav-link" href="{% url 'nosotros' %}">NOSOTROS</a>
+<a class="nav-item nav-link" href="{% url 'servicio' %}">SERVICIOS</a>
+<a class="nav-item nav-link" href="{% url 'ubicacion' %}">UBICACIÓN</a>
+{% endblock %}
+
+<!-- BLOC CONTENIDO -->
+{% block contenido %}
+{% load humanize %}
+<br><br><br>
+<div class="col-12 col-md-6 offset-md-3">
+    <div class="card">
+        <div class="card-body">
+            <h2>Listado de productos</h2>
+            <hr>
+            <table class="table table-striped table-hover table-responsive-sm">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Stock</th>
+                    <th>Proveedor</th>
+                    <th>Marca</th>
+                </tr>
+
+                {% for p in productos %}
+
+                <tr>
+                    <td>{{p.prod_id }}</td>
+                    <td>{{p.prod_nombre | title}}</td>
+                    <td>{{p.prod_stock}}</td>
+                    <td>{{p.prov_id }}</td>
+                    <td>{{p.id_marca}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+
+    </div>
+</div>
+<br><br><br>
+{% endblock %}
