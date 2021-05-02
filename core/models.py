@@ -10,8 +10,9 @@ from sequences import get_next_value
 import datetime
 from django.db import models
 import functools
+"""
 def set_sql_for_field(field, sql):
-    """
+    
     Decorator for Model.save() to set SQL for field if empty.
 
     Example:
@@ -27,8 +28,7 @@ def set_sql_for_field(field, sql):
 
     When this model is saved col1 and col2 will be set (if empty) to the output
     of the provided SQL within the schema/database of the model's app.
-    """
-    """
+    ""
     def decorator(model_save_func):
         @functools.wraps(model_save_func)
         def wrapper(obj, *args, **kwargs):
@@ -49,8 +49,8 @@ def set_sql_for_field(field, sql):
 
             return model_save_func(obj, *args, **kwargs)
         return wrapper
-    return decorator
-"""
+    return decorator """
+
 
 class BoletaFactura(models.Model):
     bol_fac_id = models.AutoField(primary_key=True)

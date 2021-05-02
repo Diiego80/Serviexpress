@@ -15,12 +15,32 @@
 
 <!-- BLOC CONTENIDO -->
 {% block contenido %}
+{% load crispy_forms_tags %}
 <link rel="stylesheet" href="{% static 'core/css/formulario.css' %}">
 
-<form action="" class="formulario_reserva" method="POST">
-    {% csrf_token %}
-    {{formReserva}}
-    <br>
-    <button type="submit" id="btnEnviar" class="button">Enviar</button>
-</form>
+<br><br>
+<div class="row">
+    <div class="col-12 col-md-6 offset-md-3">
+        <div class="card">
+            <div class="card-body">
+                <form action="" class="" method="POST">
+                    {% csrf_token %}
+                    {{formReserva | crispy}}
+                    <br>
+                    <div class="d-flex justify-content-end">
+                        <input type="reset" value="Limpiar Formulario" class="btn btn-secondary">
+                        &nbsp;
+                        <button type="submit" id="btnEnviar" class="btn btn-primary">Enviar</button>
+
+                    </div>
+                </form>
+                {{mensaje}}
+            </div>
+        </div>
+
+
+    </div>
+
+</div>
+<br><br>
 {% endblock %}
